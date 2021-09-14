@@ -1,0 +1,5 @@
+name: 'tftools'
+description: 'Install terraform tools'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
