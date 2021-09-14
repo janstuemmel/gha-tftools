@@ -21,3 +21,5 @@ ln -s ../tfenv/bin/tfenv "${TFTOOLS_BINDIR}/tfenv"
 
 "${TFTOOLS_BINDIR}/tfenv" install
 "${TFTOOLS_BINDIR}/tfenv" use
+
+echo "${TFTOOLS_INSTALLDIR}/bin" >> "${GITHUB_PATH}"
