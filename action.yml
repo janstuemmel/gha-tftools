@@ -1,5 +1,7 @@
 name: 'tftools'
 description: 'Install terraform tools'
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
+  using: "composite"
+  steps:
+    - run: ${{ github.action_path }}/install_tftools.sh
+      shell: bash
