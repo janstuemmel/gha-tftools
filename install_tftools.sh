@@ -37,7 +37,7 @@ echo "Install latest terraform"
 ###
 ### Install tgenv and link binaries
 ###
-echo "Install tgenv ${TFENV_VERSION}"
+echo "Install tgenv ${TGENV_VERSION}"
 curl -L "https://github.com/taosmountain/tgenv/archive/refs/tags/${TGENV_VERSION}.tar.gz" | tar -xz -C "${TGENV_INSTALLDIR}" --strip 1
 echo 'trust-tfenv: yes' > "${TGENV_INSTALLDIR}/use-gpgv"
 
