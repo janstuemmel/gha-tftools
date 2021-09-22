@@ -9,11 +9,35 @@ inputs:
     description: 'Version of tgenv to install'
     required: false
     default: '0.1.0'
+  aws-role-arn:
+    description: 'AWS Role that will be assumed via github OIDC'
+    required: false
+    default: ''
+  aws-default-region:
+    description: 'AWS default region'
+    required: false
+    default: 'eu-central-1'
+  aws-token-file:
+    description: 'Path to AWS web identity token file'
+    required: false
+    default: '/tmp/awscreds'
+
 runs:
-  using: "composite"
+  using: 'composite'
   steps:
-    - run: ${{ github.action_path }}/install_tftools.sh
+    - name: Install terraform toolstack
       env:
         TFENV_VERSION: ${{ inputs.tfenv-version }}
         TGENV_VERSION: ${{ inputs.tgenv-version }}
+      run: ${{ github.action_path }}/scripts/install_tftools.sh
+      shell: bash
+    
+    - name: Configure OIDC web identity token file for AWS
+      # We cannot use gh action conditionals here yet :(
+      # https://github.com/actions/runner/issues/834
+      env:
+        AWS_ROLE_ARN: ${{ inputs.aws-role-arn}}
+        AWS_WEB_IDENTITY_TOKEN_FILE: ${{ inputs.aws-token-file}}
+        AWS_DEFAULT_REGION: ${{ inputs.aws-default-region}}
+      run: ${{ github.action_path }}/scripts/configure_token.sh
       shell: bash
