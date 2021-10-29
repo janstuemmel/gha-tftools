@@ -14,13 +14,13 @@ This action installs the tools [tfenv](https://github.com/tfutils/tfenv) and [tg
 
 ## Example usage
 ```
-uses: suddeutsche/gha-tftools@v1
+uses: sueddeutsche/gha-tftools@v1
 ```
 
 or with specific version:
 
 ```
-uses: suddeutsche/gha-tftools@v1
+uses: sueddeutsche/gha-tftools@v1
 with:
   tfenv-version: '2.2.2'
 ```
